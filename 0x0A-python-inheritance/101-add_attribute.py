@@ -1,12 +1,21 @@
 #!/usr/bin/python3
-"A module that defines a class named MyList"
+"""Module 101-add_attribute.
+Checks if an attribute can be added to an object.
+"""
 
 
-class MyList(list):
-    """A class named MyList
-    Attributes:
-    attr1(print_sorted): prints sorted list
+def add_attribute(an_obj, an_attr, a_value):
+    """Checks if an_attr of value a_value can be added to an_obj.
+
+    Args:
+        - an_obj: object to add the attribute to
+        - an_attr: name of the attribute
+        - a_value: value of the attribute to add
     """
-    def print_sorted(self):
-        """Prints instance"""
-        print(sorted(self))
+
+    if not hasattr(an_obj, '__slots__') and not hasattr(an_obj, '__dict__'):
+        raise TypeError("can't add new attribute")
+    if hasattr(an_obj, '__slots__') and not hasattr(an_obj, an_attr):
+        raise TypeError("can't add new attribute")
+
+    setattr(an_obj, an_attr, a_value)
