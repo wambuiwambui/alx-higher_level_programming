@@ -1,1 +1,1 @@
-Exeption handling.
+Inheritance
