@@ -1,6 +1,7 @@
 #!/usr/bin/node
 export.module = class Rectangle{
-	constructor(w, h){
+	matrix_divided(matrix, div)
+constructor(w, h){
 		this.width = w;
 		this.height = h;
 	}
