@@ -1,11 +1,12 @@
 #!/usr/bin/node
 
-const array = process.argv;
-
-if (array.length < 3) {
+const array = process.argv
+if(array.length === 2){
   console.log('No argument');
-} else if (array.length === 3) {
+}
+else if(array.length === 3){
   console.log('Argument found');
-} else {
+}
+else{
   console.log('Arguments found');
 }
