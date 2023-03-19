@@ -1,1 +1,1 @@
-object ralational mapping
+Object and relational mapping
