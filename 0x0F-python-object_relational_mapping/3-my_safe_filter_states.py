@@ -1,20 +1,35 @@
 #!/usr/bin/python3
 """
-python script that lists all states from the database hbtn_0e_0_usa with a
-given name and is safe from MySQL injections
+This script lists all states with a name starting with N (upper N) from the database hbtn_0e_0_usa.
 """
-
 import MySQLdb
-from sys import argv
+import sys
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
-                         passwd=argv[2], db=argv[3], charset="utf8")
+    # Take arguments from command line
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+    state_name = sys.argv[4]
+
+    # Connect to MySQL database
+    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=db_name)
+
+    # Create a cursor object to execute queries
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC",
-                   (argv[4],))
+
+    # Use a prepared statement to safely search for state names
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cursor.execute(query, (state_name,))
+
+    # Fetch all the matching rows
     rows = cursor.fetchall()
+
+    # Display the results
     for row in rows:
         print(row)
+
+    # Close cursor and database connection
     cursor.close()
     db.close()
+
