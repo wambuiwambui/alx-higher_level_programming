@@ -3,7 +3,6 @@
 lists all State objects and corresponding City objects contained in a database
 """
 
-import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
