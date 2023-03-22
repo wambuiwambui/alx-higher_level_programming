@@ -22,7 +22,8 @@ if __name__ == '__main__':
         port=3306,
         user=username,
         passwd=password,
-        db=database_name
+        db=database_name,
+        charset="utf8"
     )
 
     cur = db.cursor()
@@ -34,7 +35,7 @@ if __name__ == '__main__':
     rows = cur.fetchall()
 
     for row in rows:
-        print(row)
+        print("({}, '{}')".format(row[0], row[1]))
 
     cur.close()
     db.close()
