@@ -14,4 +14,3 @@ cat /tmp/headers.txt
 
 # Remove temporary file
 rm /tmp/headers.txt
-
